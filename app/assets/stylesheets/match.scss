@@ -1,0 +1,51 @@
+// Place all the styles related to the match controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photo-text{
+    p{
+        font-size:65px;
+        font-weight: bold;
+        // opacity: 0.9;
+        color:#fff;
+    }
+} 
+
+.photo-sentence{
+    margin-bottom: 180px;
+
+    p{
+        font-size:20px;
+        font-weight: bold;
+        // opacity: 0.9;
+        line-height: 30px;
+        margin-bottom: 180px !important;
+    }
+}
+
+button{
+    border-radius: 10px;
+    
+}
+
+.bbb{
+    margin-left:80px !important;
+    margin-top:50px !important;
+}
+
+img{
+    opacity: 0.8;
+}
+
+.card{
+    margin-right:105px !important;
+}
+
+.description{
+    font-size:12px;
+}
+
+h4{
+    padding-top:50px
+}
+

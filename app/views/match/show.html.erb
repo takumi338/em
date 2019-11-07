@@ -1,0 +1,42 @@
+<div class="uk-grid-small uk-grid-match uk-padding" uk-grid>
+    <div class="uk-card uk-card-default uk-card-body">
+        <div class="uk-card-header">
+        <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+                <%= image_tag "avatar.png",class: "uk-border-circle", width: "40", height:"40" %>
+            </div>
+            <div class="uk-width-expand">
+                <h3 class="uk-card-title uk-margin-remove-bottom"><p><%= @match.name%></p></h3>
+                <p><%= @match.user.nickname%></p>
+                <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00"><p><%= @match.user.created_at%></p></time></p>
+            </div>
+        </div>
+    </div>
+    <div class="uk-card-body">
+        <p><%= @match.text%></p>
+        <%= link_to  '編集',"/match/#{@match.id}/edit" %>
+        <%= link_to  '削除',"/match/#{@match.id}",method: :delete %>
+    </div>
+    <div class="container"> 
+    <!-- ここからフォーム -->
+    <% if current_user %>
+      <%= form_tag("/match/#{@match.id}/comments", method: :post) do %>
+        <p><textarea cols="30" name="text" placeholder="コメント" rows="10" style="width:600px;" class="uk-padding-small"></textarea></p>
+        <input type="submit" style="width:630px;" value="コメントする" class="uk-button uk-button-default">
+      <% end %>
+    <% end %>
+<div class="comments">   
+      <h4 class="">コメント一覧</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+    
+  </div>
+    </div>
+    </div>

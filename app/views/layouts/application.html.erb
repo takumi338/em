@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Em</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+
+ <nav class="uk-section-primary" uk-navbar>
+       <div class="uk-navbar-left">
+
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="/"><i class="fas fa-laptop-code fa-2x"></i></a></li>
+            <li class="uk-active"><a href="/">E-Match</a></li>
+        </ul>
+
+    </div>
+
+    <div class="uk-navbar-right">
+
+        <ul class="uk-navbar-nav">
+          <%if user_signed_in? %>
+            <li class="uk-active"><%= link_to "新規投稿", match_new_path %></li>
+            <%
+=begin%>
+ <li>
+                <a href="/users/<%= current_user.id %>">マイページ</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </li> 
+<%
+=end%>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+           <% else %>
+            <li class="uk-active"><%= link_to "新規登録", new_user_registration_path%></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+          <% end %>
+        </ul>
+
+    </div>
+
+  <%
+=begin%>
+ <nav class="uk-navbar-container uk-section-primary uk-preserve-color" uk-navbar>
+
+    <div class="uk-navbar-left">
+
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="/">E-Match</a></li>
+        </ul>
+
+    </div>
+
+    <div class="uk-navbar-right">
+
+        <ul class="uk-navbar-nav">
+          <%if user_signed_in? %>
+            <li class="uk-active"><%= link_to "新規投稿", match_new_path %></li>
+            <li>
+                <a href="/users/<%= current_user.id %>">マイページ</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><%= link_to "ログアウト", destroy_user_session_path %></li>
+           <% else %>
+            <li class="uk-active"><%= link_to "新規登録", new_user_registration_path%></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+          <% end %>
+        </ul>
+
+    </div>
+
+</nav>
+     
+<%
+=end%>
+    <%
+=begin%>
+ <%= link_to "TOP", root_path %>
+
+    <%if user_signed_in? %>
+      <%= link_to "ログアウト", destroy_user_session_path %>
+      <%= link_to "新規投稿", match_new_path %>
+      <a href="/users/<%= current_user.id %>">マイページ</a>
+    <% else %>
+      <%= link_to "ログイン", new_user_session_path %>
+      <%= link_to "新規登録", new_user_registration_path%>
+    <% end %> 
+<%
+=end%>
+
+  </header>
+    <%= yield %>
+
+  <footer>
+    <nav class="uk-section-primary" uk-navbar>
+        <div class="uk-navbar-left">
+            <div class="uk-navbar-item uk-logo">
+                E-MATCH
+            </div>
+        </div>
+        </div>
+    </nav>
+  </footer>
+  </body>
+</html>

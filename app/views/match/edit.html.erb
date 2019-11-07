@@ -1,0 +1,17 @@
+<div class="contents row uk-padding">
+  <%= form_tag("/match/#{@match.id}", method: :patch) do %>
+    <h2>
+      メンターとして投稿する
+    </h2>
+    タイトル
+    <p class="description">サポートできる内容を完結に記入してください</p>
+    <p><input placeholder="ニックネーム" type="text" name="name" style="width:400px;" class="uk-padding-small" value="<%= @match.name %>"></p>
+    画像
+    <p class="description">あなたのイメージが伝わる画像を挿入してください</p>
+    <p><input placeholder="画像URL" type="text" name="image" style="width:400px;" class="uk-padding-small"></p>
+    サポート内容
+    <p class="description">サポートできる内容を記入してください</p>
+    <p><textarea cols="30" name="text" placeholder="内容" rows="10" style="width:400px;" class="uk-padding-small"><%= @match.text%></textarea></p>
+    <p><input type="submit" value="編集する" style="width:430px;" style="" class="uk-button uk-button-default"></p>
+  <% end %>
+</div>
